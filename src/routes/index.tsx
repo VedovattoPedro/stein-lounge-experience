@@ -56,11 +56,126 @@ const NAV = [
   { label: "Início", href: "#home" },
   { label: "Sobre", href: "#about" },
   { label: "Experiências", href: "#experiences" },
+  { label: "Agenda", href: "#agenda" },
   { label: "Planos", href: "#membership" },
   { label: "Galeria", href: "#gallery" },
   { label: "Localização", href: "#location" },
   { label: "Contato", href: "#contact" },
 ];
+
+type AgendaEvent = {
+  day: string; // ex: "Qui · 18 Jun"
+  weekday: string; // ex: "Quinta-feira"
+  date: string; // ex: "18 de Junho"
+  time: string;
+  title: string;
+  category: string;
+  description: string;
+  week: number; // 1..4 (semana do mês)
+};
+
+const AGENDA: AgendaEvent[] = [
+  {
+    day: "Ter · 02",
+    weekday: "Terça-feira",
+    date: "02 de Junho",
+    time: "20h00",
+    title: "Degustação · Cohiba Behike 56",
+    category: "Charuto",
+    description:
+      "Vertical reservada com nosso keeper, harmonizada com um single malt de 18 anos. Vagas limitadas a 12 membros.",
+    week: 1,
+  },
+  {
+    day: "Qui · 04",
+    weekday: "Quinta-feira",
+    date: "04 de Junho",
+    time: "21h30",
+    title: "Noite de Pôquer · Mesa Privativa",
+    category: "Pôquer",
+    description:
+      "Buy-in fechado. Fichas vintage, dealer profissional e jantar de seis tempos servido entre as mãos.",
+    week: 1,
+  },
+  {
+    day: "Sáb · 06",
+    weekday: "Sábado",
+    date: "06 de Junho",
+    time: "16h00",
+    title: "UEFA · Final transmitida no lounge",
+    category: "Esportes",
+    description:
+      "Telão privativo, charutos selecionados e serviço de sommelier durante toda a partida.",
+    week: 1,
+  },
+  {
+    day: "Qua · 10",
+    weekday: "Quarta-feira",
+    date: "10 de Junho",
+    time: "19h30",
+    title: "Clube do Livro · Biografias",
+    category: "Cultura",
+    description:
+      "Encontro mensal da biblioteca. Whisky, leitura comentada e debate conduzido pelo curador da casa.",
+    week: 2,
+  },
+  {
+    day: "Sex · 12",
+    weekday: "Sexta-feira",
+    date: "12 de Junho",
+    time: "20h00",
+    title: "Jantar Reservado · Founders Table",
+    category: "Negócios",
+    description:
+      "Mesa fechada para oito fundadores e investidores. Apresentações curadas, à porta fechada.",
+    week: 2,
+  },
+  {
+    day: "Ter · 16",
+    weekday: "Terça-feira",
+    date: "16 de Junho",
+    time: "20h30",
+    title: "Flight de Conhaque Vintage",
+    category: "Degustação",
+    description:
+      "Quatro safras raras conduzidas por master-blender convidado. Reservado para membros e convidados.",
+    week: 3,
+  },
+  {
+    day: "Sáb · 20",
+    weekday: "Sábado",
+    date: "20 de Junho",
+    time: "21h00",
+    title: "Noite de Charutos Cubanos",
+    category: "Charuto",
+    description:
+      "Seleção exclusiva da Habanos S.A. apresentada por nosso humidor master. Música ao vivo no piano.",
+    week: 3,
+  },
+  {
+    day: "Qui · 25",
+    weekday: "Quinta-feira",
+    date: "25 de Junho",
+    time: "19h00",
+    title: "Roda de Networking · C-Level",
+    category: "Negócios",
+    description:
+      "Encontro restrito a executivos sêniores e fundadores. Mediação por convidado da casa.",
+    week: 4,
+  },
+  {
+    day: "Sex · 27",
+    weekday: "Sexta-feira",
+    date: "27 de Junho",
+    time: "22h00",
+    title: "After Hours · Jazz ao Vivo",
+    category: "Música",
+    description:
+      "Trio de jazz no salão principal. Coquetelaria autoral até o fechamento.",
+    week: 4,
+  },
+];
+
 
 const EXPERIENCES = [
   {
