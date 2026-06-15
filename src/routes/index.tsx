@@ -12,6 +12,7 @@ import {
   Car,
   Check,
   MessageCircle,
+  CalendarDays,
 } from "lucide-react";
 import { SteinLogo } from "@/components/SteinLogo";
 import { Reveal } from "@/components/Reveal";
