@@ -206,7 +206,7 @@ function Nav({
           ))}
         </nav>
         <a href="#contact" className="hidden lg:inline-flex btn-gold !py-2.5 !px-5 !text-[0.7rem]">
-          Schedule a Visit
+          Agende uma Visita
         </a>
         <button
           aria-label="Toggle menu"
@@ -234,7 +234,7 @@ function Nav({
               onClick={() => setOpen(false)}
               className="btn-gold mt-2"
             >
-              Schedule a Visit
+              Agende uma Visita
             </a>
           </div>
         </div>
@@ -263,37 +263,38 @@ function Hero() {
         <Reveal>
           <p className="eyebrow mb-6">
             <span className="gold-rule mr-4" />
-            Established in spirit · Private members only
+            Clube privativo · Somente para membros
           </p>
         </Reveal>
         <Reveal delay={120}>
           <h1 className="font-serif text-[2.6rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] leading-[1.02] max-w-4xl text-cream">
-            More than a cigar lounge.
+            Mais do que um lounge de charutos.
             <br />
-            <span className="italic text-gradient-gold">A community</span> built around
-            experiences, connections and great conversations.
+            <span className="italic text-gradient-gold">Uma comunidade</span> construída em torno
+            de experiências, conexões e grandes conversas.
           </h1>
         </Reveal>
         <Reveal delay={260}>
           <p className="mt-8 max-w-xl text-base md:text-lg text-cream/70 leading-relaxed">
-            Premium cigars, exclusive events, business networking and unforgettable moments —
-            in a private setting designed for those who value the slow art of conversation.
+            Charutos premium, eventos exclusivos, networking de negócios e momentos
+            inesquecíveis — em um ambiente reservado para quem valoriza a arte lenta
+            da boa conversa.
           </p>
         </Reveal>
         <Reveal delay={420}>
           <div className="mt-12 flex flex-wrap gap-4">
             <a href="#contact" className="btn-gold">
-              Schedule a Visit <ArrowRight size={14} />
+              Agende uma Visita <ArrowRight size={14} />
             </a>
             <a href="#about" className="btn-ghost-gold">
-              Learn More
+              Saiba Mais
             </a>
           </div>
         </Reveal>
       </div>
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-cream/40 text-[0.65rem] tracking-[0.4em] uppercase animate-shimmer">
-        Scroll
+        Role
       </div>
     </section>
   );
@@ -307,34 +308,35 @@ function About() {
         <Reveal className="order-2 lg:order-1">
           <p className="eyebrow mb-6">
             <span className="gold-rule mr-4" />
-            Our Story
+            Nossa História
           </p>
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight text-cream mb-8">
-            A house built for the
-            <span className="italic text-gradient-gold"> slow ritual </span>
-            of good company.
+            Uma casa feita para o
+            <span className="italic text-gradient-gold"> ritual sereno </span>
+            da boa companhia.
           </h2>
           <div className="space-y-5 text-cream/70 leading-relaxed">
             <p>
-              Stein Premium began the way the best institutions do — with a small group of
-              friends, a humidor of carefully chosen cigars, and the conviction that the
-              best conversations still happen in person, unhurried, behind a closed door.
+              O Stein Premium começou como as melhores instituições começam — com um
+              pequeno grupo de amigos, um humidor de charutos cuidadosamente escolhidos
+              e a convicção de que as melhores conversas ainda acontecem pessoalmente,
+              sem pressa, atrás de uma porta fechada.
             </p>
             <p>
-              What started as a private corner has grown into a members' lounge for
-              founders, professionals and connoisseurs. A place where business gets done
-              over a Cohiba, where a Friday night becomes a poker hand worth telling
-              about, and where strangers leave as partners.
+              O que era um canto privativo se transformou em um lounge de membros para
+              fundadores, profissionais e apreciadores. Um lugar onde negócios são
+              fechados sobre um Cohiba, onde uma sexta-feira vira uma mão de pôquer que
+              vale ser contada, e onde estranhos saem como sócios.
             </p>
             <p>
-              Our mission is simple: protect the craft, curate the company, and keep the
-              door open only to those who understand the difference.
+              Nossa missão é simples: proteger o ofício, curar a companhia e manter a
+              porta aberta apenas para quem entende a diferença.
             </p>
           </div>
           <div className="mt-10 grid grid-cols-3 gap-6 max-w-md">
-            <Stat n="180+" l="Members" />
-            <Stat n="42" l="Events / yr" />
-            <Stat n="9" l="Years" />
+            <Stat n="180+" l="Membros" />
+            <Stat n="42" l="Eventos / ano" />
+            <Stat n="9" l="Anos" />
           </div>
         </Reveal>
         <Reveal delay={200} className="order-1 lg:order-2">
@@ -372,15 +374,15 @@ function Experiences() {
         <Reveal className="text-center max-w-2xl mx-auto mb-24">
           <p className="eyebrow mb-6">
             <span className="gold-rule mr-3" />
-            The Experience
+            A Experiência
             <span className="gold-rule ml-3" />
           </p>
           <h2 className="font-serif text-4xl md:text-6xl leading-tight text-cream">
-            What we offer
+            O que oferecemos
           </h2>
           <p className="mt-6 text-cream/60 leading-relaxed">
-            Six ways to spend an evening at Stein — every one built on craft, discretion
-            and the company you choose to keep.
+            Seis formas de passar uma noite no Stein — todas construídas sobre ofício,
+            discrição e a companhia que você escolhe ter.
           </p>
         </Reveal>
 
@@ -410,7 +412,7 @@ function Experiences() {
                 className={i % 2 === 1 ? "lg:order-1" : ""}
                 delay={150}
               >
-                <p className="eyebrow mb-4">0{i + 1} · Experience</p>
+                <p className="eyebrow mb-4">0{i + 1} · Experiência</p>
                 <h3 className="font-serif text-3xl md:text-5xl leading-tight text-cream mb-6">
                   {e.title}
                 </h3>
@@ -433,15 +435,15 @@ function Membership() {
         <Reveal className="text-center max-w-2xl mx-auto mb-20">
           <p className="eyebrow mb-6">
             <span className="gold-rule mr-3" />
-            Membership
+            Planos
             <span className="gold-rule ml-3" />
           </p>
           <h2 className="font-serif text-4xl md:text-6xl leading-tight text-cream">
-            Become a member
+            Torne-se um membro
           </h2>
           <p className="mt-6 text-cream/60 leading-relaxed">
-            Three tiers, one standard of service. All memberships include a personal
-            humidor and standing reservations.
+            Três níveis, um único padrão de serviço. Todos os planos incluem humidor
+            pessoal e reservas permanentes.
           </p>
         </Reveal>
 
@@ -457,7 +459,7 @@ function Membership() {
               >
                 {p.featured && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-ink px-4 py-1 text-[0.6rem] tracking-[0.3em] uppercase">
-                    Most Chosen
+                    Mais Escolhido
                   </div>
                 )}
                 <p className="eyebrow">{p.name}</p>
@@ -479,7 +481,7 @@ function Membership() {
                   href="#contact"
                   className={p.featured ? "btn-gold w-full" : "btn-ghost-gold w-full"}
                 >
-                  Become a Member
+                  Tornar-se Membro
                 </a>
               </div>
             </Reveal>
@@ -498,11 +500,11 @@ function Gallery() {
         <Reveal className="text-center max-w-2xl mx-auto mb-20">
           <p className="eyebrow mb-6">
             <span className="gold-rule mr-3" />
-            Gallery
+            Galeria
             <span className="gold-rule ml-3" />
           </p>
           <h2 className="font-serif text-4xl md:text-6xl leading-tight text-cream">
-            Inside the lounge
+            Dentro do lounge
           </h2>
         </Reveal>
 
@@ -537,11 +539,11 @@ function Location() {
         <Reveal className="text-center max-w-2xl mx-auto mb-20">
           <p className="eyebrow mb-6">
             <span className="gold-rule mr-3" />
-            Find Us
+            Onde Estamos
             <span className="gold-rule ml-3" />
           </p>
           <h2 className="font-serif text-4xl md:text-6xl leading-tight text-cream">
-            Visit Stein Premium
+            Visite o Stein Premium
           </h2>
         </Reveal>
 
@@ -553,14 +555,14 @@ function Location() {
                 <SteinLogo />
               </div>
               <p className="text-cream/60 text-sm mb-8 leading-relaxed">
-                Reservations and member services — we answer personally.
+                Reservas e atendimento a membros — respondemos pessoalmente.
               </p>
               <div className="space-y-4 text-sm">
-                <a href="tel:+15551234567" className="flex items-center gap-3 text-cream/80 hover:text-gold transition-colors">
-                  <Phone size={16} className="text-gold" /> +1 (555) 123-4567
+                <a href="tel:+5511999990000" className="flex items-center gap-3 text-cream/80 hover:text-gold transition-colors">
+                  <Phone size={16} className="text-gold" /> +55 (11) 99999-0000
                 </a>
-                <a href="tel:+15557654321" className="flex items-center gap-3 text-cream/80 hover:text-gold transition-colors">
-                  <Phone size={16} className="text-gold" /> +1 (555) 765-4321
+                <a href="tel:+5511988880000" className="flex items-center gap-3 text-cream/80 hover:text-gold transition-colors">
+                  <Phone size={16} className="text-gold" /> +55 (11) 98888-0000
                 </a>
                 <a href="https://instagram.com" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-cream/80 hover:text-gold transition-colors">
                   <Instagram size={16} className="text-gold" /> @steinpremium
@@ -577,17 +579,17 @@ function Location() {
             <div className="bg-ink p-10 md:p-12 h-full">
               <div className="flex items-center gap-3 text-gold mb-6">
                 <Clock size={18} />
-                <h3 className="font-serif text-2xl text-cream">Opening Hours</h3>
+                <h3 className="font-serif text-2xl text-cream">Horário de Funcionamento</h3>
               </div>
               <ul className="space-y-3 text-sm text-cream/75 mb-8">
                 <li className="flex justify-between border-b border-border pb-2">
-                  <span>Mon — Thu</span><span className="text-gold">5pm — 1am</span>
+                  <span>Seg — Qui</span><span className="text-gold">17h — 01h</span>
                 </li>
                 <li className="flex justify-between border-b border-border pb-2">
-                  <span>Fri — Sat</span><span className="text-gold">5pm — 3am</span>
+                  <span>Sex — Sáb</span><span className="text-gold">17h — 03h</span>
                 </li>
                 <li className="flex justify-between">
-                  <span>Sunday</span><span className="text-cream/40">Members only</span>
+                  <span>Domingo</span><span className="text-cream/40">Somente membros</span>
                 </li>
               </ul>
               <div className="aspect-[16/10] overflow-hidden border border-border">
@@ -606,27 +608,27 @@ function Location() {
             <div className="bg-ink p-10 md:p-12 h-full">
               <div className="flex items-center gap-3 text-gold mb-6">
                 <MapPin size={18} />
-                <h3 className="font-serif text-2xl text-cream">Address</h3>
+                <h3 className="font-serif text-2xl text-cream">Endereço</h3>
               </div>
               <address className="not-italic text-cream/75 text-sm leading-relaxed mb-8">
-                42 Madison Avenue<br />
-                Penthouse Floor<br />
-                New York, NY 10010<br />
-                United States
+                Rua Oscar Freire, 1042<br />
+                Cobertura<br />
+                Jardins — São Paulo, SP<br />
+                01426-001, Brasil
               </address>
               <a
-                href="https://maps.google.com/?q=42+Madison+Avenue+New+York"
+                href="https://maps.google.com/?q=Rua+Oscar+Freire+1042+Sao+Paulo"
                 target="_blank"
                 rel="noreferrer"
                 className="btn-ghost-gold w-full mb-6"
               >
-                Get Directions <ArrowRight size={14} />
+                Como Chegar <ArrowRight size={14} />
               </a>
               <div className="flex items-start gap-3 text-sm text-cream/65">
                 <Car size={16} className="text-gold mt-1 shrink-0" />
                 <p>
-                  Complimentary valet for members. Public parking available across the street
-                  on Madison & 27th.
+                  Valet cortesia para membros. Estacionamento público disponível na
+                  esquina da Oscar Freire com a Haddock Lobo.
                 </p>
               </div>
             </div>
@@ -653,20 +655,20 @@ function Contact() {
       <div className="container-lux relative z-10 text-center max-w-3xl mx-auto">
         <Reveal>
           <p className="eyebrow mb-6">
-            <span className="gold-rule mr-3" /> Reservations
+            <span className="gold-rule mr-3" /> Reservas
             <span className="gold-rule ml-3" />
           </p>
           <h2 className="font-serif text-4xl md:text-7xl leading-[1.05] text-cream mb-8">
-            Join our
-            <span className="italic text-gradient-gold"> community</span>.
+            Faça parte da nossa
+            <span className="italic text-gradient-gold"> comunidade</span>.
           </h2>
           <p className="text-cream/70 text-lg leading-relaxed mb-12 max-w-xl mx-auto">
-            Schedule a private visit. Walk the humidor, meet the keeper, share an evening
-            with us — and see if Stein Premium is the room you've been looking for.
+            Agende uma visita privativa. Conheça o humidor, fale com o nosso keeper
+            e descubra se o Stein Premium é o lugar que você estava procurando.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="https://wa.me/15551234567"
+              href="https://wa.me/5511999990000"
               target="_blank"
               rel="noreferrer"
               className="btn-gold"
@@ -696,8 +698,8 @@ function Footer() {
         <div className="text-gold/80">
           <SteinLogo />
         </div>
-        <p>© {new Date().getFullYear()} Stein Premium · All rights reserved</p>
-        <p className="text-cream/30">Crafted with discretion</p>
+        <p>© {new Date().getFullYear()} Stein Premium · Todos os direitos reservados</p>
+        <p className="text-cream/30">Feito com discrição</p>
       </div>
     </footer>
   );
@@ -707,10 +709,10 @@ function Footer() {
 function WhatsAppFloat() {
   return (
     <a
-      href="https://wa.me/15551234567"
+      href="https://wa.me/5511999990000"
       target="_blank"
       rel="noreferrer"
-      aria-label="Chat with us on WhatsApp"
+      aria-label="Fale conosco no WhatsApp"
       className="fixed bottom-6 right-6 z-40 group"
     >
       <span className="absolute inset-0 rounded-full bg-gold/40 animate-ping" />
