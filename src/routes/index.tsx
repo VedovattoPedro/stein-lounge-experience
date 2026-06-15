@@ -545,7 +545,123 @@ function Experiences() {
   );
 }
 
+/* ───────────── AGENDA ───────────── */
+function Agenda() {
+  const [view, setView] = useState<"week" | "month">("week");
+  const currentWeek = 1;
+  const events = view === "week" ? AGENDA.filter((e) => e.week === currentWeek) : AGENDA;
+
+  const monthLabel = "Junho de 2026";
+  const weekLabel = "01 — 07 de Junho";
+
+  return (
+    <section id="agenda" className="py-28 md:py-40 bg-ink">
+      <div className="container-lux">
+        <Reveal className="text-center max-w-2xl mx-auto mb-16">
+          <p className="eyebrow mb-6">
+            <span className="gold-rule mr-3" />
+            Agenda
+            <span className="gold-rule ml-3" />
+          </p>
+          <h2 className="font-serif text-4xl md:text-6xl leading-tight text-cream">
+            Eventos do <span className="italic text-gradient-gold">mês</span>
+          </h2>
+          <p className="mt-6 text-cream/60 leading-relaxed">
+            Noites curadas, jantares fechados e encontros reservados. A agenda
+            é atualizada quinzenalmente — vagas sob reserva.
+          </p>
+        </Reveal>
+
+        <Reveal delay={120}>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 border-b border-border pb-6">
+            <div>
+              <div className="flex items-center gap-3 text-gold mb-2">
+                <CalendarDays size={18} />
+                <span className="text-[0.7rem] tracking-[0.3em] uppercase text-cream/60">
+                  {view === "week" ? "Esta semana" : "Este mês"}
+                </span>
+              </div>
+              <h3 className="font-serif text-3xl md:text-4xl text-cream">
+                {view === "week" ? weekLabel : monthLabel}
+              </h3>
+            </div>
+            <div className="inline-flex border border-border self-start md:self-auto">
+              <button
+                onClick={() => setView("week")}
+                className={`px-6 py-3 text-[0.7rem] tracking-[0.3em] uppercase transition-colors ${
+                  view === "week"
+                    ? "bg-gold text-ink"
+                    : "text-cream/60 hover:text-gold"
+                }`}
+              >
+                Semana
+              </button>
+              <button
+                onClick={() => setView("month")}
+                className={`px-6 py-3 text-[0.7rem] tracking-[0.3em] uppercase transition-colors border-l border-border ${
+                  view === "month"
+                    ? "bg-gold text-ink"
+                    : "text-cream/60 hover:text-gold"
+                }`}
+              >
+                Mês
+              </button>
+            </div>
+          </div>
+        </Reveal>
+
+        <div className="grid gap-px bg-gold/15">
+          {events.map((e, i) => (
+            <Reveal key={`${e.day}-${e.title}`} delay={i * 60}>
+              <article className="group bg-ink hover:bg-charcoal/60 transition-colors duration-500 p-6 md:p-8">
+                <div className="grid md:grid-cols-[180px_120px_1fr_auto] gap-6 md:gap-10 items-start md:items-center">
+                  <div>
+                    <div className="font-serif text-3xl md:text-4xl text-gold leading-none">
+                      {e.day.split(" · ")[1]}
+                    </div>
+                    <div className="text-[0.65rem] tracking-[0.3em] uppercase text-cream/50 mt-2">
+                      {e.weekday}
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 text-cream/80">
+                    <Clock size={14} className="text-gold" />
+                    <span className="text-sm tracking-wider">{e.time}</span>
+                  </div>
+                  <div>
+                    <p className="text-[0.6rem] tracking-[0.3em] uppercase text-gold/80 mb-2">
+                      {e.category}
+                    </p>
+                    <h4 className="font-serif text-xl md:text-2xl text-cream group-hover:text-gold transition-colors mb-2">
+                      {e.title}
+                    </h4>
+                    <p className="text-sm text-cream/60 leading-relaxed max-w-2xl">
+                      {e.description}
+                    </p>
+                  </div>
+                  <a
+                    href="#contact"
+                    className="btn-ghost-gold !py-2.5 !px-5 !text-[0.65rem] whitespace-nowrap"
+                  >
+                    Reservar <ArrowRight size={12} />
+                  </a>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delay={200}>
+          <p className="text-center text-cream/40 text-xs tracking-[0.25em] uppercase mt-10">
+            Eventos sujeitos a confirmação · Reservas mediante contato
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 /* ───────────── MEMBERSHIP ───────────── */
+
 function Membership() {
   return (
     <section id="membership" className="py-28 md:py-40">
