@@ -34,16 +34,16 @@ import gal6 from "@/assets/gallery-6.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Stein Premium — Private Cigar Lounge & Business Club" },
+      { title: "Stein Premium — Lounge Privativo de Charutos & Clube de Negócios" },
       {
         name: "description",
         content:
-          "More than a cigar lounge. A private community built around premium cigars, exclusive events and meaningful business connections.",
+          "Mais do que um lounge de charutos. Uma comunidade privada construída em torno de charutos premium, eventos exclusivos e conexões de negócios significativas.",
       },
-      { property: "og:title", content: "Stein Premium — Private Cigar Lounge" },
+      { property: "og:title", content: "Stein Premium — Lounge Privativo de Charutos" },
       {
         property: "og:description",
-        content: "Premium cigars, exclusive events, business networking and unforgettable moments.",
+        content: "Charutos premium, eventos exclusivos, networking de negócios e momentos inesquecíveis.",
       },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -52,97 +52,97 @@ export const Route = createFileRoute("/")({
 });
 
 const NAV = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Experiences", href: "#experiences" },
-  { label: "Membership", href: "#membership" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Location", href: "#location" },
-  { label: "Contact", href: "#contact" },
+  { label: "Início", href: "#home" },
+  { label: "Sobre", href: "#about" },
+  { label: "Experiências", href: "#experiences" },
+  { label: "Planos", href: "#membership" },
+  { label: "Galeria", href: "#gallery" },
+  { label: "Localização", href: "#location" },
+  { label: "Contato", href: "#contact" },
 ];
 
 const EXPERIENCES = [
   {
-    title: "Premium Cigars",
+    title: "Charutos Premium",
     img: expCigars,
-    text: "A curated humidor of the world's most refined hand-rolled cigars — Cuban, Dominican and Nicaraguan reserves, kept in perfect climate, served with quiet ritual.",
+    text: "Um humidor selecionado com os charutos enrolados à mão mais refinados do mundo — reservas cubanas, dominicanas e nicaraguenses, mantidas em clima perfeito e servidas com ritual silencioso.",
   },
   {
-    title: "Poker Nights",
+    title: "Noites de Pôquer",
     img: expPoker,
-    text: "Private tables, vintage chips and long evenings between gentlemen. Where strategy, conversation and a slow draw of smoke become the same thing.",
+    text: "Mesas privativas, fichas vintage e longas noites entre cavalheiros. Onde estratégia, conversa e uma tragada lenta se tornam a mesma coisa.",
   },
   {
-    title: "Book Club",
+    title: "Clube do Livro",
     img: expBook,
-    text: "A monthly gathering in our library room. Whisky, biographies and ideas worth defending — the most enduring conversations rarely happen on a screen.",
+    text: "Um encontro mensal em nossa biblioteca. Whisky, biografias e ideias que vale a pena defender — as conversas mais duradouras raramente acontecem em uma tela.",
   },
   {
-    title: "Business Club & Networking",
+    title: "Clube de Negócios & Networking",
     img: expBusiness,
-    text: "Founders, investors and operators meet here on purpose. Curated introductions, closed-door dinners and the kind of trust that builds real ventures.",
+    text: "Fundadores, investidores e executivos se encontram aqui com propósito. Apresentações curadas, jantares a portas fechadas e o tipo de confiança que constrói negócios reais.",
   },
   {
-    title: "Sports Broadcast Events",
+    title: "Transmissões Esportivas",
     img: expSports,
-    text: "Champions League, Grand Slams, title fights — broadcast in the lounge with private tables, sommelier service and the right company.",
+    text: "Champions League, Grand Slams, lutas de título — transmitidos no lounge com mesas privativas, serviço de sommelier e a companhia certa.",
   },
   {
-    title: "Exclusive Gatherings & Tastings",
+    title: "Encontros & Degustações Exclusivas",
     img: expTasting,
-    text: "Single-malt verticals, vintage cognac flights and master-blender evenings. Reserved for members and their invited guests.",
+    text: "Verticais de single malt, flights de conhaque vintage e noites com master-blenders. Reservado para membros e seus convidados.",
   },
 ];
 
 const PLANS = [
   {
     name: "Bronze",
-    price: "$250",
-    period: "/ month",
-    tagline: "An entry to the lounge.",
+    price: "R$ 1.250",
+    period: "/ mês",
+    tagline: "A porta de entrada do lounge.",
     features: [
-      "Lounge access — weekday evenings",
-      "Personal humidor locker",
-      "10% off all cigars & spirits",
-      "Invitations to open tastings",
+      "Acesso ao lounge — noites de semana",
+      "Locker pessoal no humidor",
+      "10% de desconto em charutos e destilados",
+      "Convites para degustações abertas",
     ],
   },
   {
     name: "Silver",
-    price: "$540",
-    period: "/ month",
-    tagline: "The members' favourite.",
+    price: "R$ 2.700",
+    period: "/ mês",
+    tagline: "O plano preferido dos membros.",
     features: [
-      "Unlimited lounge access",
-      "Premium humidor with name plate",
-      "20% off all purchases",
-      "Priority seats at poker nights",
-      "Two guest passes per month",
+      "Acesso ilimitado ao lounge",
+      "Humidor premium com placa personalizada",
+      "20% de desconto em todas as compras",
+      "Lugares prioritários nas noites de pôquer",
+      "Dois convites para visitantes por mês",
     ],
     featured: true,
   },
   {
     name: "Gold",
-    price: "$1,200",
-    period: "/ month",
-    tagline: "The full circle.",
+    price: "R$ 6.000",
+    period: "/ mês",
+    tagline: "O círculo completo.",
     features: [
-      "24/7 private lounge access",
-      "Reserved chesterfield with brass plate",
-      "30% off all purchases",
-      "All exclusive events included",
-      "Concierge & private room booking",
+      "Acesso 24/7 ao lounge privativo",
+      "Poltrona chesterfield reservada com placa em latão",
+      "30% de desconto em todas as compras",
+      "Todos os eventos exclusivos inclusos",
+      "Concierge e reserva de sala privativa",
     ],
   },
 ];
 
 const GALLERY = [
-  { src: gal1, h: "row-span-2", alt: "Backlit bar inside Stein Premium" },
-  { src: gal2, h: "row-span-1", alt: "Lighting a hand-rolled cigar" },
-  { src: gal3, h: "row-span-1", alt: "Members toasting in the lounge" },
-  { src: gal4, h: "row-span-2", alt: "Private humidor cabinet" },
-  { src: gal5, h: "row-span-1", alt: "Crystal whiskey and cigar ashtray" },
-  { src: gal6, h: "row-span-1", alt: "Quiet leather corner of the lounge" },
+  { src: gal1, h: "row-span-2", alt: "Bar iluminado dentro do Stein Premium" },
+  { src: gal2, h: "row-span-1", alt: "Acendendo um charuto enrolado à mão" },
+  { src: gal3, h: "row-span-1", alt: "Membros brindando no lounge" },
+  { src: gal4, h: "row-span-2", alt: "Humidor privativo" },
+  { src: gal5, h: "row-span-1", alt: "Cristal de whisky e cinzeiro com charuto" },
+  { src: gal6, h: "row-span-1", alt: "Canto reservado de couro do lounge" },
 ];
 
 function Index() {
