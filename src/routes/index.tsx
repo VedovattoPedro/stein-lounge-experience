@@ -278,7 +278,9 @@ function Index() {
       <Hero />
       <About />
       <Experiences />
+      <Agenda />
       <Membership />
+
       <Gallery />
       <Location />
       <Contact />
