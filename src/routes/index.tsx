@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Menu,
   X,
@@ -10,6 +10,12 @@ import {
   Check,
   MessageCircle,
   CalendarDays,
+  ChevronLeft,
+  ChevronRight,
+  ClipboardList,
+  UserRoundPen,
+  Truck,
+  Cigarette,
 } from "lucide-react";
 import { SteinLogo } from "@/components/SteinLogo";
 import { Reveal } from "@/components/Reveal";
@@ -19,6 +25,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
 
 import heroImg from "@/assets/hero.jpg";
 import aboutImg from "@/assets/about.jpg";
@@ -49,6 +58,10 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "Charutos premium, eventos exclusivos, networking de negócios e momentos inesquecíveis.",
       },
+      { property: "og:image", content: "/og-image.jpg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { name: "twitter:image", content: "/og-image.jpg" },
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
@@ -60,6 +73,7 @@ const NAV = [
   { label: "Sobre", href: "#about" },
   { label: "Experiências", href: "#experiences" },
   { label: "Agenda", href: "#agenda" },
+  { label: "Como Funciona", href: "#how-it-works" },
   { label: "Planos", href: "#membership" },
   { label: "FAQ", href: "#faq" },
   { label: "Galeria", href: "#gallery" },
@@ -217,9 +231,8 @@ const EXPERIENCES = [
 const PLANS = [
   {
     name: "Chesterton",
-    price: "R$ 230",
-    period: "/ mês",
-    annual: "ou 12x R$ 190 no plano anual",
+    monthlyPrice: 230,
+    annualMonthlyPrice: 190,
     tagline: "A porta de entrada do clube.",
     features: [
       "2 charutos premium por mês, exceto cubanos",
@@ -231,9 +244,8 @@ const PLANS = [
   },
   {
     name: "Jordan",
-    price: "R$ 410",
-    period: "/ mês",
-    annual: "ou 12x R$ 330 no plano anual",
+    monthlyPrice: 410,
+    annualMonthlyPrice: 330,
     tagline: "O plano preferido dos membros.",
     features: [
       "4 charutos premium por mês, podendo incluir cubanos",
@@ -247,9 +259,8 @@ const PLANS = [
   },
   {
     name: "Churchill",
-    price: "R$ 1.100",
-    period: "/ mês",
-    annual: "ou 12x R$ 880 no plano anual",
+    monthlyPrice: 1100,
+    annualMonthlyPrice: 880,
     tagline: "O círculo completo.",
     features: [
       "6 charutos premium por mês, incluindo cubanos e ultrapremium",
@@ -261,6 +272,31 @@ const PLANS = [
       "2 acessórios de cortesia por ano",
       "Plano anual: 5 charutos long filler de brinde",
     ],
+  },
+];
+
+const formatBRL = (n: number) => `R$ ${n.toLocaleString("pt-BR")}`;
+
+const HOW_IT_WORKS = [
+  {
+    icon: ClipboardList,
+    title: "Escolha o plano ideal para você",
+    text: "3 planos com vantagens progressivas, mensal ou anual.",
+  },
+  {
+    icon: UserRoundPen,
+    title: "Preencha suas informações",
+    text: "Dados pessoais e endereço de entrega direto com o nosso atendimento.",
+  },
+  {
+    icon: Truck,
+    title: "Acompanhe seu pedido",
+    text: "Atualizações por e-mail até seu pedido chegar onde você escolheu.",
+  },
+  {
+    icon: Cigarette,
+    title: "Desfrute seu kit mensal",
+    text: "Reúna-se com os amigos ou aproveite o seu momento.",
   },
 ];
 
@@ -314,6 +350,7 @@ function Index() {
       <About />
       <Experiences />
       <Agenda />
+      <HowItWorks />
       <Membership />
       <Faq />
 
@@ -348,30 +385,30 @@ function Nav({
         <a href="#home" className="text-cream">
           <SteinLogo />
         </a>
-        <nav className="hidden lg:flex items-center gap-9">
+        <nav className="hidden xl:flex items-center gap-5 2xl:gap-7">
           {NAV.map((n) => (
             <a
               key={n.href}
               href={n.href}
-              className="text-[0.72rem] tracking-[0.24em] uppercase text-cream/75 hover:text-gold transition-colors"
+              className="relative whitespace-nowrap text-[0.68rem] tracking-[0.12em] uppercase text-cream/75 hover:text-gold transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1.5 after:h-px after:w-0 after:bg-gold after:transition-all after:duration-300 hover:after:w-full"
             >
               {n.label}
             </a>
           ))}
         </nav>
-        <a href="#contact" className="hidden lg:inline-flex btn-gold !py-2.5 !px-5 !text-[0.7rem]">
+        <a href="#contact" className="hidden xl:inline-flex btn-gold !py-2.5 !px-5 !text-[0.68rem] whitespace-nowrap">
           Agende uma Visita
         </a>
         <button
           aria-label="Toggle menu"
-          className="lg:hidden text-cream"
+          className="xl:hidden text-cream"
           onClick={() => setOpen(!open)}
         >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
       {open && (
-        <div className="lg:hidden bg-ink border-t border-border animate-fade-in">
+        <div className="xl:hidden bg-ink border-t border-border animate-fade-in">
           <div className="container-lux py-6 flex flex-col gap-5">
             {NAV.map((n) => (
               <a
@@ -399,19 +436,61 @@ function Nav({
 
 /* ───────────── HERO ───────────── */
 function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+    let raf = 0;
+    const onMove = (e: MouseEvent) => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        const rect = section.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        section.style.setProperty("--mx", `${x}%`);
+        section.style.setProperty("--my", `${y}%`);
+        raf = 0;
+      });
+    };
+    section.addEventListener("mousemove", onMove);
+    return () => {
+      section.removeEventListener("mousemove", onMove);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+    <section
+      id="home"
+      ref={sectionRef}
+      className="relative min-h-screen flex items-center overflow-hidden"
+    >
       <div className="absolute inset-0">
         <img
           src={heroImg}
           alt="Stein Premium cigar lounge interior"
           width={1920}
           height={1280}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
           className="w-full h-full object-cover animate-slow-zoom"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-ink/85 via-ink/55 to-ink" />
         <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/20 to-transparent" />
       </div>
+
+      <div
+        className="pointer-events-none absolute inset-0 z-[1] transition-opacity duration-700"
+        style={{
+          background:
+            "radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), rgba(200,164,107,0.14), transparent 60%)",
+        }}
+      />
 
       <div className="container-lux relative z-10 pt-32 pb-20">
         <Reveal>
@@ -437,8 +516,9 @@ function Hero() {
         </Reveal>
         <Reveal delay={420}>
           <div className="mt-12 flex flex-wrap gap-4">
-            <a href="#contact" className="btn-gold">
-              Agende uma Visita <ArrowRight size={14} />
+            <a href="#contact" className="btn-gold group">
+              Agende uma Visita{" "}
+              <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
             </a>
             <a href="#about" className="btn-ghost-gold">
               Saiba Mais
@@ -497,7 +577,7 @@ function About() {
               width={1280}
               height={1280}
               loading="lazy"
-              className="relative w-full h-[520px] md:h-[640px] object-cover"
+              className="relative w-full aspect-[4/5] object-cover"
             />
           </div>
         </Reveal>
@@ -543,7 +623,7 @@ function Experiences() {
                     width={1280}
                     height={960}
                     loading="lazy"
-                    className="w-full h-[420px] md:h-[520px] object-cover transition-transform duration-[1.2s] group-hover:scale-105"
+                    className="w-full aspect-[4/3] object-cover transition-transform duration-[1.2s] group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-700" />
                 </div>
@@ -662,9 +742,10 @@ function Agenda() {
                   </div>
                   <a
                     href="#contact"
-                    className="btn-ghost-gold !py-2.5 !px-5 !text-[0.65rem] whitespace-nowrap"
+                    className="btn-ghost-gold group !py-2.5 !px-5 !text-[0.65rem] whitespace-nowrap"
                   >
-                    Reservar <ArrowRight size={12} />
+                    Reservar{" "}
+                    <ArrowRight size={12} className="transition-transform duration-300 group-hover:translate-x-1" />
                   </a>
                 </div>
               </article>
@@ -673,9 +754,48 @@ function Agenda() {
         </div>
 
         <Reveal delay={200}>
-          <p className="text-center text-cream/40 text-xs tracking-[0.25em] uppercase mt-10">
+          <p className="text-center text-cream/55 text-xs tracking-[0.25em] uppercase mt-10">
             Eventos sujeitos a confirmação · Reservas mediante contato
           </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ───────────── HOW IT WORKS ───────────── */
+function HowItWorks() {
+  return (
+    <section id="how-it-works" className="py-28 md:py-40 bg-ink">
+      <div className="container-lux">
+        <Reveal className="text-center max-w-2xl mx-auto mb-20">
+          <p className="eyebrow mb-6">
+            <span className="gold-rule mr-3" />
+            Como Funciona
+            <span className="gold-rule ml-3" />
+          </p>
+          <h2 className="font-serif text-4xl md:text-6xl leading-tight text-cream">
+            Do primeiro passo ao seu <span className="italic text-gradient-gold">kit mensal</span>
+          </h2>
+        </Reveal>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+          {HOW_IT_WORKS.map((step, i) => (
+            <Reveal key={step.title} delay={i * 120} className="text-center lg:text-left">
+              <div className="flex lg:flex-col items-center lg:items-start gap-4 lg:gap-0">
+                <span className="font-serif text-5xl text-gold/70 leading-none">0{i + 1}</span>
+                <step.icon size={22} className="hidden lg:block text-gold mt-4 mb-3" />
+              </div>
+              <h3 className="font-serif text-xl md:text-2xl text-cream mt-3 mb-2">{step.title}</h3>
+              <p className="text-cream/65 text-sm leading-relaxed">{step.text}</p>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delay={480} className="text-center mt-16">
+          <a href="#membership" className="btn-ghost-gold">
+            Ver Planos
+          </a>
         </Reveal>
       </div>
     </section>
@@ -685,10 +805,15 @@ function Agenda() {
 /* ───────────── MEMBERSHIP ───────────── */
 
 function Membership() {
+  const [annual, setAnnual] = useState(false);
+  const maxSavingsPct = Math.round(
+    Math.max(...PLANS.map((p) => (p.monthlyPrice - p.annualMonthlyPrice) / p.monthlyPrice)) * 100
+  );
+
   return (
     <section id="membership" className="py-28 md:py-40">
       <div className="container-lux">
-        <Reveal className="text-center max-w-2xl mx-auto mb-20">
+        <Reveal className="text-center max-w-2xl mx-auto mb-16">
           <p className="eyebrow mb-6">
             <span className="gold-rule mr-3" />
             Planos
@@ -705,13 +830,37 @@ function Membership() {
           </p>
         </Reveal>
 
+        <Reveal delay={80} className="flex items-center justify-center gap-4 mb-12">
+          <Label
+            htmlFor="billing-toggle"
+            className={`text-xs tracking-[0.2em] uppercase cursor-pointer ${!annual ? "text-cream" : "text-cream/50"}`}
+          >
+            Mensal
+          </Label>
+          <Switch
+            id="billing-toggle"
+            checked={annual}
+            onCheckedChange={setAnnual}
+            className="data-[state=checked]:bg-gold data-[state=unchecked]:bg-charcoal"
+          />
+          <Label
+            htmlFor="billing-toggle"
+            className={`text-xs tracking-[0.2em] uppercase cursor-pointer ${annual ? "text-cream" : "text-cream/50"}`}
+          >
+            Anual
+          </Label>
+          <span className="ml-2 text-[0.65rem] tracking-[0.15em] uppercase text-gold/80 border border-gold/30 px-2 py-1">
+            Economize até {maxSavingsPct}%
+          </span>
+        </Reveal>
+
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {PLANS.map((p, i) => (
-            <Reveal key={p.name} delay={i * 120}>
+            <Reveal key={p.name} delay={i * 120} variant="pop">
               <div
-                className={`relative h-full p-10 border transition-all duration-500 hover:-translate-y-2 ${
+                className={`relative h-full p-10 border transition-all duration-500 hover:-translate-y-2 hover:shadow-gold-glow ${
                   p.featured
-                    ? "border-gold bg-gradient-to-b from-charcoal to-ink shadow-[0_30px_80px_-30px_rgba(200,164,107,0.35)] md:scale-[1.03]"
+                    ? "border-gold bg-gradient-to-b from-charcoal to-ink shadow-gold-glow md:scale-[1.03]"
                     : "border-border bg-charcoal/40 hover:border-gold/60"
                 }`}
               >
@@ -722,10 +871,16 @@ function Membership() {
                 )}
                 <p className="eyebrow">{p.name}</p>
                 <div className="mt-6 flex items-baseline gap-2">
-                  <span className="font-serif text-5xl text-cream">{p.price}</span>
-                  <span className="text-cream/50 text-sm">{p.period}</span>
+                  <span className="font-serif text-5xl text-cream">
+                    {formatBRL(annual ? p.annualMonthlyPrice : p.monthlyPrice)}
+                  </span>
+                  <span className="text-cream/50 text-sm">/ mês</span>
                 </div>
-                <p className="mt-2 text-[0.7rem] tracking-wide text-gold/80">{p.annual}</p>
+                <p className="mt-2 text-[0.7rem] tracking-wide text-gold/80">
+                  {annual
+                    ? `Economize R$ ${(p.monthlyPrice - p.annualMonthlyPrice) * 12} por ano · cobrado 12x`
+                    : "Sem fidelidade · renovação mensal"}
+                </p>
                 <p className="mt-3 italic text-cream/60 font-serif text-lg">{p.tagline}</p>
                 <div className="w-10 h-px bg-gold my-7" />
                 <ul className="space-y-4 mb-10">
@@ -788,6 +943,23 @@ function Faq() {
 
 /* ───────────── GALLERY ───────────── */
 function Gallery() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const showPrev = () =>
+    setActiveIndex((i) => (i === null ? null : (i - 1 + GALLERY.length) % GALLERY.length));
+  const showNext = () =>
+    setActiveIndex((i) => (i === null ? null : (i + 1) % GALLERY.length));
+
+  useEffect(() => {
+    if (activeIndex === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") showPrev();
+      if (e.key === "ArrowRight") showNext();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [activeIndex]);
+
   return (
     <section id="gallery" className="py-28 md:py-40 bg-charcoal border-y border-border">
       <div className="container-lux">
@@ -817,10 +989,51 @@ function Gallery() {
               />
               <div className="absolute inset-0 bg-ink/30 group-hover:bg-ink/10 transition-colors duration-500" />
               <div className="absolute inset-0 border border-transparent group-hover:border-gold/60 transition-colors duration-500" />
+              <button
+                type="button"
+                onClick={() => setActiveIndex(i)}
+                aria-label={`Ampliar imagem: ${g.alt}`}
+                className="absolute inset-0 w-full h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+              />
             </Reveal>
           ))}
         </div>
       </div>
+
+      <Dialog open={activeIndex !== null} onOpenChange={(o) => !o && setActiveIndex(null)}>
+        <DialogContent className="max-w-4xl w-full bg-ink border border-gold/25 p-0 overflow-hidden sm:rounded-none">
+          <DialogTitle className="sr-only">Galeria de fotos do Stein Premium</DialogTitle>
+          <DialogDescription className="sr-only">
+            Visualização ampliada das fotos do lounge, com navegação entre as imagens.
+          </DialogDescription>
+          {activeIndex !== null && (
+            <div className="relative">
+              <img
+                src={GALLERY[activeIndex].src}
+                alt={GALLERY[activeIndex].alt}
+                className="w-full max-h-[80vh] object-contain bg-ink"
+              />
+              <p className="p-4 text-center text-sm text-cream/70">{GALLERY[activeIndex].alt}</p>
+              <button
+                type="button"
+                onClick={showPrev}
+                aria-label="Imagem anterior"
+                className="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-10 h-10 rounded-full bg-ink/70 border border-gold/40 text-gold hover:bg-gold hover:text-ink transition-colors"
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                type="button"
+                onClick={showNext}
+                aria-label="Próxima imagem"
+                className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center justify-center w-10 h-10 rounded-full bg-ink/70 border border-gold/40 text-gold hover:bg-gold hover:text-ink transition-colors"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
@@ -880,7 +1093,7 @@ function Location() {
                   <span>Sábado</span><span className="text-gold">15h — 21h</span>
                 </li>
                 <li className="flex justify-between">
-                  <span>Domingo — Segunda</span><span className="text-cream/40">Fechado</span>
+                  <span>Domingo — Segunda</span><span className="text-cream/55">Fechado</span>
                 </li>
               </ul>
               <div className="aspect-[16/10] overflow-hidden border border-border">
@@ -910,9 +1123,10 @@ function Location() {
                 href="https://maps.google.com/?q=Rua+Santa+Rita+56+Ivoti+RS"
                 target="_blank"
                 rel="noreferrer"
-                className="btn-ghost-gold w-full mb-6"
+                className="btn-ghost-gold group w-full mb-6"
               >
-                Como Chegar <ArrowRight size={14} />
+                Como Chegar{" "}
+                <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
               </a>
               <div className="flex items-start gap-3 text-sm text-cream/65">
                 <MapPin size={16} className="text-gold mt-1 shrink-0" />

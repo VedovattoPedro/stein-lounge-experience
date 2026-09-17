@@ -4,10 +4,12 @@ export function Reveal({
   children,
   className = "",
   delay = 0,
+  variant = "default",
 }: {
   children: ReactNode;
   className?: string;
   delay?: number;
+  variant?: "default" | "pop";
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -29,8 +31,10 @@ export function Reveal({
     return () => io.disconnect();
   }, [delay]);
 
+  const baseClass = variant === "pop" ? "reveal-pop" : "reveal";
+
   return (
-    <div ref={ref} className={`reveal ${className}`}>
+    <div ref={ref} className={`${baseClass} ${className}`}>
       {children}
     </div>
   );

@@ -93,6 +93,10 @@
   color: transparent;
 }
 
+@utility shadow-gold-glow {
+  box-shadow: var(--shadow-gold);
+}
+
 @utility btn-gold {
   display: inline-flex;
   align-items: center;
@@ -157,6 +161,16 @@
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.reveal-pop {
+  opacity: 0;
+  transform: translateY(28px) scale(0.96);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-pop.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .animate-slow-zoom { animation: slow-zoom 12s ease-out forwards; }
