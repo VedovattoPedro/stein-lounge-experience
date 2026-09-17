@@ -616,16 +616,19 @@ function Experiences() {
                 className={i % 2 === 1 ? "lg:order-2" : ""}
                 delay={i % 2 === 1 ? 150 : 0}
               >
-                <div className="group relative overflow-hidden">
-                  <img
-                    src={e.img}
-                    alt={e.title}
-                    width={1280}
-                    height={960}
-                    loading="lazy"
-                    className="w-full aspect-[4/3] object-cover transition-transform duration-[1.2s] group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-700" />
+                <div className="relative">
+                  <div className="absolute -inset-4 border border-gold/30" />
+                  <div className="group relative overflow-hidden">
+                    <img
+                      src={e.img}
+                      alt={e.title}
+                      width={1280}
+                      height={960}
+                      loading="lazy"
+                      className="w-full aspect-[4/3] object-cover transition-transform duration-[1.2s] group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-700" />
+                  </div>
                 </div>
               </Reveal>
               <Reveal
