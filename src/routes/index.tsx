@@ -4,18 +4,21 @@ import {
   Menu,
   X,
   ArrowRight,
-  Phone,
   Instagram,
-  Facebook,
   MapPin,
   Clock,
-  Car,
   Check,
   MessageCircle,
   CalendarDays,
 } from "lucide-react";
 import { SteinLogo } from "@/components/SteinLogo";
 import { Reveal } from "@/components/Reveal";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 import heroImg from "@/assets/hero.jpg";
 import aboutImg from "@/assets/about.jpg";
@@ -58,6 +61,7 @@ const NAV = [
   { label: "Experiências", href: "#experiences" },
   { label: "Agenda", href: "#agenda" },
   { label: "Planos", href: "#membership" },
+  { label: "FAQ", href: "#faq" },
   { label: "Galeria", href: "#gallery" },
   { label: "Localização", href: "#location" },
   { label: "Contato", href: "#contact" },
@@ -212,43 +216,74 @@ const EXPERIENCES = [
 
 const PLANS = [
   {
-    name: "Bronze",
-    price: "R$ 1.250",
+    name: "Chesterton",
+    price: "R$ 230",
     period: "/ mês",
-    tagline: "A porta de entrada do lounge.",
+    annual: "ou 12x R$ 190 no plano anual",
+    tagline: "A porta de entrada do clube.",
     features: [
-      "Acesso ao lounge — noites de semana",
-      "Locker pessoal no humidor",
-      "10% de desconto em charutos e destilados",
-      "Convites para degustações abertas",
+      "2 charutos premium por mês, exceto cubanos",
+      "10% de desconto em todo o catálogo Stein Premium",
+      "10% de desconto em consumo no Stein Lounge",
+      "10% de desconto em eventos presenciais",
+      "Plano anual: 1 charuto long filler de brinde",
     ],
   },
   {
-    name: "Silver",
-    price: "R$ 2.700",
+    name: "Jordan",
+    price: "R$ 410",
     period: "/ mês",
+    annual: "ou 12x R$ 330 no plano anual",
     tagline: "O plano preferido dos membros.",
     features: [
-      "Acesso ilimitado ao lounge",
-      "Humidor premium com placa personalizada",
-      "20% de desconto em todas as compras",
-      "Lugares prioritários nas noites de pôquer",
-      "Dois convites para visitantes por mês",
+      "4 charutos premium por mês, podendo incluir cubanos",
+      "20% de desconto em todo o catálogo Stein Premium",
+      "20% de desconto em consumo no Stein Lounge",
+      "20% de desconto em eventos presenciais",
+      "Espaço para eventos privados e empresariais no Lounge",
+      "Plano anual: 2 charutos long filler de brinde",
     ],
     featured: true,
   },
   {
-    name: "Gold",
-    price: "R$ 6.000",
+    name: "Churchill",
+    price: "R$ 1.100",
     period: "/ mês",
+    annual: "ou 12x R$ 880 no plano anual",
     tagline: "O círculo completo.",
     features: [
-      "Acesso 24/7 ao lounge privativo",
-      "Poltrona chesterfield reservada com placa em latão",
-      "30% de desconto em todas as compras",
-      "Todos os eventos exclusivos inclusos",
-      "Concierge e reserva de sala privativa",
+      "6 charutos premium por mês, incluindo cubanos e ultrapremium",
+      "25% de desconto em todo o catálogo Stein Premium",
+      "25% de desconto em consumo no Stein Lounge",
+      "100% de desconto em todos os eventos presenciais",
+      "Espaço prioritário para eventos privados e empresariais",
+      "Disponibilidade total para reuniões no Lounge",
+      "2 acessórios de cortesia por ano",
+      "Plano anual: 5 charutos long filler de brinde",
     ],
+  },
+];
+
+const FAQ = [
+  {
+    q: "Os produtos são originais?",
+    a: "Sim. A Stein Premium preza pela integridade absoluta de seus produtos. Todos os charutos do clube são 100% originais, adquiridos de fornecedores oficiais com garantia de procedência.",
+  },
+  {
+    q: "Posso escolher quais produtos vou receber?",
+    a: "A proposta do clube é a curadoria. Selecionamos criteriosamente os charutos para proporcionar novas experiências de degustação a cada mês.",
+  },
+  {
+    q: "Como funciona a entrega?",
+    a: "O frete é tabelado para todo o Brasil de acordo com os preços de mercado, mas há possibilidades de ter frete grátis em algumas modalidades. Se você mora perto de Ivoti-RS, priorizaremos que retire seus produtos em nosso Lounge.",
+  },
+  {
+    q: "Existe fidelidade no plano mensal?",
+    a: "Não. No plano mensal, você tem total liberdade e a renovação é automática a cada 30 dias, podendo ser cancelada sem taxas ou restrições. Porém, as maiores vantagens de preço e brindes são reservadas para quem opta pelo plano anual.",
+  },
+  {
+    q: "O que acontece se o charuto chegar danificado?",
+    a: "Utilizamos embalagens especiais e umidoras para transporte. Caso ocorra qualquer imprevisto logístico, basta entrar em contato com nosso suporte que faremos a reposição imediata.",
   },
 ];
 
@@ -280,6 +315,7 @@ function Index() {
       <Experiences />
       <Agenda />
       <Membership />
+      <Faq />
 
       <Gallery />
       <Location />
@@ -435,26 +471,21 @@ function About() {
           </h2>
           <div className="space-y-5 text-cream/70 leading-relaxed">
             <p>
-              O Stein Premium começou como as melhores instituições começam — com um
-              pequeno grupo de amigos, um humidor de charutos cuidadosamente escolhidos
-              e a convicção de que as melhores conversas ainda acontecem pessoalmente,
-              sem pressa, atrás de uma porta fechada.
+              A Stein Premium nasceu do sonho compartilhado de dois amigos — Daniel
+              Stein e Junior Volcan. Mais do que criar uma marca ou um produto, o
+              objetivo sempre foi estabelecer um novo padrão de experiência e
+              excelência para apreciadores de charutos.
             </p>
             <p>
-              O que era um canto privativo se transformou em um lounge de membros para
-              fundadores, profissionais e apreciadores. Um lugar onde negócios são
-              fechados sobre um Cohiba, onde uma sexta-feira vira uma mão de pôquer que
-              vale ser contada, e onde estranhos saem como sócios.
+              Desenvolvemos um clube de assinatura e um serviço particular de
+              curadoria especializada, e inauguramos nosso lounge em Ivoti, no Rio
+              Grande do Sul. Ali, negócios se fecham sobre um bom charuto e uma
+              sexta-feira vira uma conversa que vale a pena continuar.
             </p>
             <p>
-              Nossa missão é simples: proteger o ofício, curar a companhia e manter a
-              porta aberta apenas para quem entende a diferença.
+              O coração deste projeto é o Clube Stein, desenvolvido para entregar aos
+              nossos assinantes a melhor curadoria de charutos do Brasil, mês após mês.
             </p>
-          </div>
-          <div className="mt-10 grid grid-cols-3 gap-6 max-w-md">
-            <Stat n="180+" l="Membros" />
-            <Stat n="42" l="Eventos / ano" />
-            <Stat n="9" l="Anos" />
           </div>
         </Reveal>
         <Reveal delay={200} className="order-1 lg:order-2">
@@ -472,15 +503,6 @@ function About() {
         </Reveal>
       </div>
     </section>
-  );
-}
-
-function Stat({ n, l }: { n: string; l: string }) {
-  return (
-    <div className="border-t border-gold/30 pt-3">
-      <div className="font-serif text-3xl md:text-4xl text-gold">{n}</div>
-      <div className="text-[0.65rem] tracking-[0.25em] uppercase text-cream/50 mt-1">{l}</div>
-    </div>
   );
 }
 
@@ -676,8 +698,10 @@ function Membership() {
             Torne-se um membro
           </h2>
           <p className="mt-6 text-cream/60 leading-relaxed">
-            Três níveis, um único padrão de serviço. Todos os planos incluem humidor
-            pessoal e reservas permanentes.
+            Três planos com curadoria mensal de charutos premium e vantagens
+            progressivas no catálogo, no Lounge e em eventos presenciais. Sem
+            fidelidade no plano mensal — os melhores benefícios ficam com o plano
+            anual.
           </p>
         </Reveal>
 
@@ -701,6 +725,7 @@ function Membership() {
                   <span className="font-serif text-5xl text-cream">{p.price}</span>
                   <span className="text-cream/50 text-sm">{p.period}</span>
                 </div>
+                <p className="mt-2 text-[0.7rem] tracking-wide text-gold/80">{p.annual}</p>
                 <p className="mt-3 italic text-cream/60 font-serif text-lg">{p.tagline}</p>
                 <div className="w-10 h-px bg-gold my-7" />
                 <ul className="space-y-4 mb-10">
@@ -721,6 +746,41 @@ function Membership() {
             </Reveal>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ───────────── FAQ ───────────── */
+function Faq() {
+  return (
+    <section id="faq" className="py-28 md:py-40 bg-charcoal border-y border-border">
+      <div className="container-lux max-w-3xl">
+        <Reveal className="text-center mb-16">
+          <p className="eyebrow mb-6">
+            <span className="gold-rule mr-3" />
+            Dúvidas
+            <span className="gold-rule ml-3" />
+          </p>
+          <h2 className="font-serif text-4xl md:text-6xl leading-tight text-cream">
+            Perguntas frequentes
+          </h2>
+        </Reveal>
+
+        <Reveal delay={120}>
+          <Accordion type="single" collapsible className="w-full">
+            {FAQ.map((item) => (
+              <AccordionItem key={item.q} value={item.q} className="border-border">
+                <AccordionTrigger className="font-serif text-lg md:text-xl text-cream hover:no-underline hover:text-gold">
+                  {item.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-cream/65 leading-relaxed text-base">
+                  {item.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </Reveal>
       </div>
     </section>
   );
@@ -792,17 +852,14 @@ function Location() {
                 Reservas e atendimento a membros — respondemos pessoalmente.
               </p>
               <div className="space-y-4 text-sm">
-                <a href="tel:+5511999990000" className="flex items-center gap-3 text-cream/80 hover:text-gold transition-colors">
-                  <Phone size={16} className="text-gold" /> +55 (11) 99999-0000
+                <a href="https://wa.me/555196713152" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-cream/80 hover:text-gold transition-colors">
+                  <MessageCircle size={16} className="text-gold" /> +55 51 9671-3152
                 </a>
-                <a href="tel:+5511988880000" className="flex items-center gap-3 text-cream/80 hover:text-gold transition-colors">
-                  <Phone size={16} className="text-gold" /> +55 (11) 98888-0000
+                <a href="https://wa.me/555199771731" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-cream/80 hover:text-gold transition-colors">
+                  <MessageCircle size={16} className="text-gold" /> +55 51 9977-1731
                 </a>
-                <a href="https://instagram.com" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-cream/80 hover:text-gold transition-colors">
-                  <Instagram size={16} className="text-gold" /> @steinpremium
-                </a>
-                <a href="https://facebook.com" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-cream/80 hover:text-gold transition-colors">
-                  <Facebook size={16} className="text-gold" /> /steinpremium
+                <a href="https://instagram.com/stein_premium" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-cream/80 hover:text-gold transition-colors">
+                  <Instagram size={16} className="text-gold" /> @stein_premium
                 </a>
               </div>
             </div>
@@ -817,19 +874,19 @@ function Location() {
               </div>
               <ul className="space-y-3 text-sm text-cream/75 mb-8">
                 <li className="flex justify-between border-b border-border pb-2">
-                  <span>Seg — Qui</span><span className="text-gold">17h — 01h</span>
+                  <span>Terça — Sexta</span><span className="text-gold">17h — 22h</span>
                 </li>
                 <li className="flex justify-between border-b border-border pb-2">
-                  <span>Sex — Sáb</span><span className="text-gold">17h — 03h</span>
+                  <span>Sábado</span><span className="text-gold">15h — 21h</span>
                 </li>
                 <li className="flex justify-between">
-                  <span>Domingo</span><span className="text-cream/40">Somente membros</span>
+                  <span>Domingo — Segunda</span><span className="text-cream/40">Fechado</span>
                 </li>
               </ul>
               <div className="aspect-[16/10] overflow-hidden border border-border">
                 <iframe
                   title="Stein Premium location"
-                  src="https://www.openstreetmap.org/export/embed.html?bbox=-74.012%2C40.704%2C-73.996%2C40.716&layer=mapnik"
+                  src="https://www.openstreetmap.org/export/embed.html?bbox=-51.1786%2C-29.6103%2C-51.1396%2C-29.5883&layer=mapnik"
                   className="w-full h-full grayscale-[60%] contrast-110"
                   loading="lazy"
                 />
@@ -845,13 +902,12 @@ function Location() {
                 <h3 className="font-serif text-2xl text-cream">Endereço</h3>
               </div>
               <address className="not-italic text-cream/75 text-sm leading-relaxed mb-8">
-                Rua Oscar Freire, 1042<br />
-                Cobertura<br />
-                Jardins — São Paulo, SP<br />
-                01426-001, Brasil
+                Rua Santa Rita, 56<br />
+                Concórdia<br />
+                Ivoti — RS, Brasil
               </address>
               <a
-                href="https://maps.google.com/?q=Rua+Oscar+Freire+1042+Sao+Paulo"
+                href="https://maps.google.com/?q=Rua+Santa+Rita+56+Ivoti+RS"
                 target="_blank"
                 rel="noreferrer"
                 className="btn-ghost-gold w-full mb-6"
@@ -859,10 +915,10 @@ function Location() {
                 Como Chegar <ArrowRight size={14} />
               </a>
               <div className="flex items-start gap-3 text-sm text-cream/65">
-                <Car size={16} className="text-gold mt-1 shrink-0" />
+                <MapPin size={16} className="text-gold mt-1 shrink-0" />
                 <p>
-                  Valet cortesia para membros. Estacionamento público disponível na
-                  esquina da Oscar Freire com a Haddock Lobo.
+                  Mora perto de Ivoti? Priorizamos a retirada dos kits do clube
+                  diretamente em nosso Lounge.
                 </p>
               </div>
             </div>
@@ -902,7 +958,7 @@ function Contact() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="https://wa.me/5511999990000"
+              href="https://wa.me/555196713152"
               target="_blank"
               rel="noreferrer"
               className="btn-gold"
@@ -910,7 +966,7 @@ function Contact() {
               <MessageCircle size={16} /> WhatsApp
             </a>
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/stein_premium"
               target="_blank"
               rel="noreferrer"
               className="btn-ghost-gold"
@@ -943,7 +999,7 @@ function Footer() {
 function WhatsAppFloat() {
   return (
     <a
-      href="https://wa.me/5511999990000"
+      href="https://wa.me/555196713152"
       target="_blank"
       rel="noreferrer"
       aria-label="Fale conosco no WhatsApp"
